@@ -1,5 +1,6 @@
 #!/bin/bash -x
 declare -A dict_result
+declare -a arr_result
 echo "Welcome to Sorting arithmetic computation problem"
 read -p "Enter value of a : " a
 read -p "Enter value of b : " b
@@ -22,4 +23,13 @@ dict_result[op4]=$result4
 echo "Values are : " ${dict_result[@]}
 echo "Keys are : " ${!dict_result[@]}
 
+#Displaying array
+inc=0
+for i in ${!dict_result[@]}
+do
+	arr_result[$inc]=${dict_result[$i]}
+	((inc++))
+done
+echo "Array values are : " ${arr_result[@]}
+echo "Array index are : " ${!arr_result[@]}
 
