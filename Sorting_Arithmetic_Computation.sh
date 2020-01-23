@@ -33,3 +33,22 @@ done
 echo "Array values are : " ${arr_result[@]}
 echo "Array index are : " ${!arr_result[@]}
 
+
+#Sorting in descending order
+for ((j=0;j<${#arr_result[@]};j++))
+do
+	sz=$(( ${#arr_result[@]}-$j-1 ))
+	for ((i=0;i<$sz;i++))
+	do
+
+		if (( ${arr_result[$i]}<${arr_result[$((i+1))]} ))
+		then
+			temp=${arr_result[$i]}
+			arr_result[i]=${arr_result[$((i+1))]}
+			arr_result[i+1]=$temp
+		fi
+	done
+done
+echo "Array values in descending order : " ${arr_result[@]}
+
+
