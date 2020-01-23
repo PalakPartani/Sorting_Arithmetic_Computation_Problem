@@ -1,6 +1,7 @@
 #!/bin/bash -x
 declare -A dict_result
 declare -a arr_result
+declare -a revarr
 echo "Welcome to Sorting arithmetic computation problem"
 read -p "Enter value of a : " a
 read -p "Enter value of b : " b
@@ -51,4 +52,13 @@ do
 done
 echo "Array values in descending order : " ${arr_result[@]}
 
+#Sorting in ascending order
+sz=${#arr_result[@]}
+k=0
+for ((i=$sz;i>=0;i--))
+do
+	revarr[$k]=${arr_result[$i]}
+	((k++))
+done
+echo "Array values in ascending order : " ${revarr[@]}
 
