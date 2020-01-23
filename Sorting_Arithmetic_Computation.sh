@@ -25,11 +25,11 @@ echo "Values are : " ${dict_result[@]}
 echo "Keys are : " ${!dict_result[@]}
 
 #Displaying array
-inc=0
-for i in ${!dict_result[@]}
+
+for((i=0;i<4;i++))
 do
-	arr_result[$inc]=${dict_result[$i]}
-	((inc++))
+	arr_result[i]=${dict_result[op$((i+1))]}
+	
 done
 echo "Array values are : " ${arr_result[@]}
 echo "Array index are : " ${!arr_result[@]}
@@ -42,7 +42,7 @@ do
 	for ((i=0;i<$sz;i++))
 	do
 
-		if (( ${arr_result[$i]}<${arr_result[$((i+1))]} ))
+		if (( ${arr_result[i]%%.*}<${arr_result[((i+1))]%%.*} ))
 		then
 			temp=${arr_result[$i]}
 			arr_result[i]=${arr_result[$((i+1))]}
