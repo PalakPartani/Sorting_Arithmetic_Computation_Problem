@@ -1,14 +1,14 @@
-#!/bin/bash -x
+#!/bin/bash 
 declare -A dict_result
 declare -a arr_result
-declare -a revarr
+
 echo "Welcome to Sorting arithmetic computation problem"
 read -p "Enter value of a : " a
 read -p "Enter value of b : " b
 read -p "Enter value of c : " c
 result=$(( $a + $b * $c ))
 result2=$(( $a * $b + $c ))
-result3=$(( $c + $( echo "scale=2; $(($a / $b))" | bc ) ))
+result3=$( echo "scale=2; $c + $a / $b" | bc )
 result4=$(( $a % $b + $c ))
 echo "Result :" $result
 echo "Result :" $result2
@@ -25,11 +25,11 @@ echo "Values are : " ${dict_result[@]}
 echo "Keys are : " ${!dict_result[@]}
 
 #Displaying array
-inc=0
-for i in ${!dict_result[@]}
+
+for((i=0;i<4;i++))
 do
-	arr_result[$inc]=${dict_result[$i]}
-	((inc++))
+	arr_result[i]=${dict_result[op$((i+1))]}
+	
 done
 echo "Array values are : " ${arr_result[@]}
 echo "Array index are : " ${!arr_result[@]}
@@ -42,7 +42,7 @@ do
 	for ((i=0;i<$sz;i++))
 	do
 
-		if (( ${arr_result[$i]}<${arr_result[$((i+1))]} ))
+		if [[ ${arr_result[i]%%.*} -gt ${arr_result[((i+1))]%%.*} ]]
 		then
 			temp=${arr_result[$i]}
 			arr_result[i]=${arr_result[$((i+1))]}
@@ -52,13 +52,5 @@ do
 done
 echo "Array values in descending order : " ${arr_result[@]}
 
-#Sorting in ascending order
-sz=${#arr_result[@]}
-k=0
-for ((i=$sz;i>=0;i--))
-do
-	revarr[$k]=${arr_result[$i]}
-	((k++))
-done
-echo "Array values in ascending order : " ${revarr[@]}
+
 
