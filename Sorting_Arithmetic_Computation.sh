@@ -1,7 +1,5 @@
 #!/bin/bash -x
 declare -A dict_result
-declare -a arr_result
-declare -a revarr
 echo "Welcome to Sorting arithmetic computation problem"
 read -p "Enter value of a : " a
 read -p "Enter value of b : " b
@@ -15,7 +13,13 @@ echo "Result :" $result2
 echo "Result :" $result3
 echo "Result :" $result4
 
-
-
+#Adding results to dictionary
+dict_result[op1]=$result
+dict_result[op2]=$result2
+dict_result[op3]=$result3
+dict_result[op4]=$result4
+#Displaying dictionary
+echo "Values are : " ${dict_result[@]}
+echo "Keys are : " ${!dict_result[@]}
 
 
